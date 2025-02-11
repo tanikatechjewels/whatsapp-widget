@@ -1,0 +1,53 @@
+{
+  "chatHeader": {
+    "bgColor": "#128c7e",
+    "textColor": "#ffffff",
+    "title": "Jwero.ai",
+    "image": "src/assets/jwero-logo.jpeg",
+    "statusMessage": "Available",
+    "fontFamily": "Arial, sans-serif"
+  },
+  "chatBox": {
+    "bgImage": "src/assets/bg.jpg",
+    "messageTitle": "Hello!",
+    "messageContent": "How can we help you today?",
+    "textColor": "#000",
+    "userMessageBgColor": "#e0f2e9",
+    "userMessageTextColor": "#000",
+    "botMessageBgColor": "#e0f2e9",
+    "botMessageTextColor": "#000000",
+    "fontFamily": "Verdana, sans-serif"
+  },
+  "whatsappButton": {
+    "bgColor": "#25d366",
+    "textColor": "#ffffff",
+    "buttonText": "Start Chat",
+    "fontFamily": "Roboto, sans-serif"
+  },
+  "floatingButton": {
+    "bgColor": "#25d366",
+    "icon": "src/assets/whatsapp_logo.png",
+    "closeIcon": "src/assets/close.png",
+    "fontFamily": "Courier New, monospace"
+  },
+  "whatsappNumber": "+91 9464626007",
+  "poweredBy": {
+    "poweredText": "Powered by",
+    "jweroText": "https://jwero.ai/",
+    "poweredColor": "black",
+    "jweroColor": "#003366",
+    "fontFamily": "Georgia, serif"
+  },
+  "tooltip": {
+    "text": "Chat with us",
+    "bgColor": "#ffffff",
+    "textColor": "#000000",
+    "delay": 0,
+    "fontFamily": "Tahoma, sans-serif"
+  },
+  "notification": {
+    "enabled": true,
+    "count": 1,
+    "delay": 3000
+  }
+}
