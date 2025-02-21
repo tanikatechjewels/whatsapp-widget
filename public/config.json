@@ -10,27 +10,44 @@
   "chatBox": {
     "bgImage": "src/assets/bg.jpg",
     "messageTitle": "Hello!",
-    "messageContent": "How can we help you today?",
+    "messageContent": "Hey!! Want to Talk with Jwero",
     "textColor": "#000",
     "userMessageBgColor": "#e0f2e9",
     "userMessageTextColor": "#000",
     "botMessageBgColor": "#e0f2e9",
+    "alignment": "right",
     "botMessageTextColor": "#000000",
     "fontFamily": "Verdana, sans-serif"
   },
   "whatsappButton": {
     "bgColor": "#25d366",
-    "textColor": "#ffffff",
-    "buttonText": "Start Chat",
+    "textColor": "#000",
+    "icon": "src/assets/jwero-logo.jpeg",
+    "buttonText": "Chat with us",
     "fontFamily": "Roboto, sans-serif"
   },
+  "autoOpenChat": false,
   "floatingButton": {
-    "bgColor": "#25d366",
-    "icon": "src/assets/whatsapp_logo.png",
-    "closeIcon": "src/assets/close.png",
-    "fontFamily": "Courier New, monospace"
+    "bgColor": "#fff",
+    "icon": "src/assets/jwero-logo.jpeg",
+    "showText": true,
+    "display": "text",
+    "fontSize": "18px",
+    "textColor": "red",
+    "buttonText": "Chat dfrj",
+    "alignment": "left",
+    "borderRadius": "50%",
+    "height": "80px",
+    "width": "50px"
   },
-  "whatsappNumber": "+91 9464626007",
+  "tooltip": {
+    "text": "Chat with us on WhatsApp!",
+    "bgColor": "#333",
+    "textColor": "#fff",
+    "fontSize": "14px",
+    "fontFamily": "Arial"
+  },
+  "whatsappNumber": "7021707461",
   "poweredBy": {
     "poweredText": "Powered by",
     "jweroText": "https://jwero.ai/",
@@ -38,16 +55,24 @@
     "jweroColor": "#003366",
     "fontFamily": "Georgia, serif"
   },
-  "tooltip": {
-    "text": "Chat with us",
-    "bgColor": "#ffffff",
-    "textColor": "#000000",
-    "delay": 0,
-    "fontFamily": "Tahoma, sans-serif"
-  },
   "notification": {
     "enabled": true,
     "count": 1,
     "delay": 3000
+  },
+  "buttonStyle": {
+    "displayText": true,
+    "fontSize": "14px",
+    "iconSize": "20px",
+    "textPadding": "10px 15px",
+    "buttonPadding": "10px 20px",
+    "borderRadius": "15px",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "fontFamily": "Arial, sans-serif",
+    "textColor": "#ffffff",
+    "bgColor": "#128c7e",
+    "hoverBgColor": "#0f6f6a",
+    "transition": "background-color 0.3s ease-in-out"
   }
 }
