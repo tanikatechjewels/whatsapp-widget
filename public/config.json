@@ -31,18 +31,18 @@
     "bgColor": "#fff",
     "icon": "src/assets/jwero-logo.jpeg",
     "showText": true,
-    "display": "text",
+    "display": "both",
     "fontSize": "18px",
     "textColor": "red",
-    "buttonText": "Chat dfrj",
-    "alignment": "left",
+    "buttonText": "Chat with us",
+    "alignment": "left ",
     "borderRadius": "50%",
     "height": "80px",
     "width": "50px"
   },
   "tooltip": {
-    "text": "Chat with us on WhatsApp!",
-    "bgColor": "#333",
+    "text": "Chat",
+    "bgColor": "#333",  
     "textColor": "#fff",
     "fontSize": "14px",
     "fontFamily": "Arial"
