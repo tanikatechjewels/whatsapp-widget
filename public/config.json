@@ -31,22 +31,28 @@
     "bgColor": "#fff",
     "icon": "src/assets/jwero-logo.jpeg",
     "showText": true,
-    "display": "both",
+    "display": "text",
     "fontSize": "18px",
     "textColor": "red",
-    "buttonText": "Chat with us",
-    "alignment": "left ",
+    "buttonText": "Chat",
+    "alignment": "left",
     "borderRadius": "50%",
     "height": "80px",
     "width": "50px"
   },
-  "tooltip": {
-    "text": "Chat",
-    "bgColor": "#333",  
-    "textColor": "#fff",
-    "fontSize": "14px",
-    "fontFamily": "Arial"
-  },
+  
+    "tooltip": {
+      "text": "Let's Chat",
+      "bgColor": "#000",
+      "textColor": "#ffffff",
+      "fontSize": "16px",
+      "fontFamily": "Arial",
+      "padding": "10px 14px",
+      "borderRadius": "8px",
+      "boxShadow": "0px 4px 10px rgba(0,0,0,0.3)",
+      "arrowSize": 8
+    },
+  
   "whatsappNumber": "7021707461",
   "poweredBy": {
     "poweredText": "Powered by",

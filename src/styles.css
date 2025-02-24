@@ -273,69 +273,6 @@ h3 {
   margin-top: 8px;
   /* Add space below the button */
 }
-/* Tooltip Styling */
-.tooltip {
-    position: absolute;
-    padding: 8px 12px;
-    border-radius: 6px;
-    white-space: nowrap;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Tooltip Positioning */
-  .tooltip-left {
-    left: -120px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .tooltip-right {
-    right: -120px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  /* Tooltip Arrow */
-  .tooltip-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
-  
-
-  .tooltip-container {
-    position: absolute;
-    background-color: #000;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    white-space: nowrap;
-    z-index: 1000;
-    top: 500%;
-    left: calc(100% + 8px); /* Adjust spacing from button */
-    transform: translateY(-50%);
-  }
-  
-  .tooltip-container::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent #000 transparent transparent;
-    transform: translateY(-50%);
-  }
-  
-
-  
-
-  
 
 /* Show tooltip on hover */
 .main-button:hover + .tooltip {

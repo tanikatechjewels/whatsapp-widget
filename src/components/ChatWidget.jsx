@@ -22,7 +22,7 @@ const ChatWidget = () => {
       .then((res) => setConfig(res.data))
       .catch((err) => console.error("Error loading config:", err));
 
-    // Setting up tooltips and notification
+    // Setting up tooltip and notification after 2 seconds
     setTimeout(() => setShowTooltip(true), 2000);
     setTimeout(() => setNotification(1), 2000);
 
@@ -38,18 +38,16 @@ const ChatWidget = () => {
 
     updateTime();
     const interval = setInterval(updateTime, 60000);
-
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, []);
 
   // Auto-opening the chat after 3 seconds if config.autoOpenChat is true
   useEffect(() => {
     if (config && config.autoOpenChat) {
       const timer = setTimeout(() => {
-        setIsOpen(true);  // Set state to open chat
-      }, 3000); // Delay of 3 seconds
-
-      return () => clearTimeout(timer); // Cleanup the timer on unmount or config change
+        setIsOpen(true);
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [config]);
 
@@ -58,17 +56,61 @@ const ChatWidget = () => {
     setShowTooltip(false);
     setNotification(0);
   };
-  const getTooltipPosition = () => {
-    if (!config) return {};
-    return config.floatingButton.alignment === "right"
-      ? { right: "60px", left: "auto" }
-      : { left: "60px", right: "auto" };
+
+  const getChatBoxPosition = () => {
+    if (config?.floatingButton?.alignment === "right") {
+      return { right: "10px", left: "auto" };
+    } else {
+      return { left: "10px", right: "auto" };
+    }
   };
 
-  const getTooltipArrow = () => {
-    return config?.floatingButton.alignment === "right"
-      ? "tooltip-arrow-right"
-      : "tooltip-arrow-left";
+  const renderButtonContent = () => {
+    if (!config) return null;
+    if (config.floatingButton.display === "both") {
+      return (
+        <>
+          <img
+            src={config.floatingButton.icon}
+            alt="WhatsApp"
+            className="wts-icon"
+            style={{ width: "34px", marginRight: "10px" }}
+          />
+          <span
+            style={{
+              color: config.floatingButton.textColor,
+              whiteSpace: "nowrap",
+              fontSize: "16px",
+              fontWeight: "bold",
+            }}
+          >
+            {config.floatingButton.buttonText}
+          </span>
+        </>
+      );
+    } else if (config.floatingButton.display === "text") {
+      return (
+        <span
+          style={{
+            color: config.floatingButton.textColor,
+            whiteSpace: "nowrap",
+            fontSize: config.floatingButton.fontSize,
+            fontWeight: "bold",
+          }}
+        >
+          {config.floatingButton.buttonText}
+        </span>
+      );
+    } else {
+      return (
+        <img
+          src={config.floatingButton.icon}
+          alt="WhatsApp"
+          className="wts-icon"
+          style={{ width: "30px" }}
+        />
+      );
+    }
   };
 
   // Simulate bot typing
@@ -82,122 +124,77 @@ const ChatWidget = () => {
     }
   }, [isOpen, config]);
 
-  const getChatBoxPosition = () => {
-    if (config?.floatingButton?.alignment === "right") {
-      return { right: "10px", left: "auto" };
-    } else {
-      return { left: "10px", right: "auto" };
-    }
-    return { top: 0, left: 0 };
-  };
-  
-    
-const renderButtonContent = () => {
   if (!config) return null;
-  if (config.floatingButton.display === "both") {
-    return (
-      <>
-        <img
-          src={config.floatingButton.icon}
-          alt="WhatsApp"
-          className="wts-icon"
-          style={{ width: "34px", marginRight: "10px" }} // Adjust icon size and spacing
-        />
-        <span
-          style={{
-            color: config.floatingButton.textColor,
-            whiteSpace: "nowrap", // Prevents text wrapping
-            fontSize: "16px",
-            fontWeight: "bold",
-          }}
-        >
-          {config.floatingButton.buttonText}
-        </span>
-      </>
-    );
-  } else if (config.floatingButton.display === "text") {
-    return (
-      <span
-        style={{    
-          color: config.floatingButton.textColor,
-          whiteSpace: "nowrap",
-          fontSize: config.floatingButton.fontSize,
-          fontWeight: "bold",
-        }}
-      >
-        {config.floatingButton.buttonText}
-      </span>
-    );
-  } else {
-    return (
-      <img
-        src={config.floatingButton.icon}
-        alt="WhatsApp"
-        className="wts-icon"
-        style={{ width: "30px" }}
-      />
-    );
-  }
-};
 
-  
-  if (!config) return null;
-  
   return (
     <div className="chat-container">
-    {/* Tooltip Component */}
-    <Tooltip
-      config={config.tooltip}
-      showTooltip={showTooltip}
-      position={config.floatingButton.alignment}
-    />
-      {/* Floating WhatsApp Button */}
-      <div style={{ position: "relative" }}>
-   <button
-          ref={whatsappButtonRef}
-          className={`main-button ${
-            config.floatingButton.display === "logo" ? "circle-button" : "full-button"
-          } animate-bounce`}
-          onClick={handleButtonClick}
-          style={{
-            backgroundColor: config.floatingButton.bgColor,
-            fontFamily: config.floatingButton.fontFamily,
-            position: "fixed",
-            [config.floatingButton.alignment]: "10px", // Dynamic positioning based on config
-            bottom: "10px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: config.floatingButton.display === "logo" ? "50px" : "auto", // Fixed size for logo, auto for text
-            height: config.floatingButton.display === "logo" ? "50px" : "auto", // Fixed size for logo, auto for text
-            padding: config.floatingButton.display === "logo" ? "0px" : "10px 15px", // Different padding for logo-only and logo+text
-            borderRadius: config.floatingButton.display === "logo" ? "50%" : "100px", // Circle for logo, rounded for text
-            fontSize: config.floatingButton.display === "logo" ? "0" : "16px", // Hide text for logo-only
-            fontWeight: "bold",
-            textDecoration: "none",
-            buttonText:config.floatingButton.buttonText,
-            color: config.floatingButton.textColor,
-            transition: "background 0.3s ease-in-out",
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)", // Adding shadow for better visibility
-            cursor: "pointer",
-            border: "none",
-            minWidth: config.floatingButton.display === "text" ? "auto" : "50px",
-            maxWidth:"250px",
-            textOverflow: "ellipsis",
-            whiteSpace:"nowrap",
-            zIndex:9999,
-            
-          }}
-          
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
-        >
-          {renderButtonContent()}
-          {notification > 0 && (
-            <div className="notification-bubble">{notification}</div>
+      {/* Fixed container for the button and tooltip */}
+      <div
+        style={{
+          position: "fixed",
+          [config.floatingButton.alignment]: "10px",
+          bottom: "10px",
+          zIndex: 9999,
+        }}
+      >
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <button
+            ref={whatsappButtonRef}
+            className={`main-button ${
+              config.floatingButton.display === "logo"
+                ? "circle-button"
+                : "full-button"
+            } animate-bounce`}
+            onClick={handleButtonClick}
+            style={{
+              backgroundColor: config.floatingButton.bgColor,
+              fontFamily: config.floatingButton.fontFamily,
+              // Now use relative positioning so the tooltip is positioned relative to this button
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width:
+                config.floatingButton.display === "logo" ? "50px" : "auto",
+              height:
+                config.floatingButton.display === "logo" ? "50px" : "auto",
+              padding:
+                config.floatingButton.display === "logo"
+                  ? "0px"
+                  : "10px 15px",
+              borderRadius:
+                config.floatingButton.display === "logo" ? "50%" : "100px",
+              fontSize: config.floatingButton.display === "logo" ? "0" : "16px",
+              fontWeight: "bold",
+              textDecoration: "none",
+              color: config.floatingButton.textColor,
+              transition: "background 0.3s ease-in-out",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+              cursor: "pointer",
+              border: "none",
+              minWidth:
+                config.floatingButton.display === "text" ? "auto" : "50px",
+              maxWidth: "250px",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          >
+            {renderButtonContent()}
+            {notification > 0 && (
+              <div className="notification-bubble">{notification}</div>
+            )}
+          </button>
+          {showTooltip && (
+            <Tooltip
+              config={config.tooltip}
+              showTooltip={showTooltip}
+              position="right" // Tooltip appears to the right of the button
+            />
           )}
-        </button>
-  </div>
+        </div>
+      </div>
       <div
         ref={chatWrapperRef}
         className={`chat-wrapper ${isOpen ? "open" : "close"}`}
@@ -206,10 +203,12 @@ const renderButtonContent = () => {
           backgroundSize: "cover",
           fontFamily: config.chatBox.fontFamily,
           position: "fixed",
-          bottom: "80px", // Adjust based on button size
-          ...getChatBoxPosition(), // Ensure chat box follows button position
+          bottom: "80px",
+          ...getChatBoxPosition(),
+          pointerEvents: isOpen ? "auto" : "none",
         }}
       >
+        {/* Chat Header */}
         <div
           className="header"
           style={{
@@ -224,16 +223,13 @@ const renderButtonContent = () => {
             </div>
             <div>
               <h3>{config.chatHeader.title}</h3>
-              <p className="status-message">
-                {config.chatHeader.statusMessage}
-              </p>
+              <p className="status-message">{config.chatHeader.statusMessage}</p>
             </div>
           </div>
           <button className="close-btn" onClick={() => setIsOpen(false)}>
             ✖
           </button>
         </div>
-
         {/* Chat Messages */}
         <div className="chat-messages">
           <div
@@ -243,7 +239,6 @@ const renderButtonContent = () => {
             <p>{config.chatBox.messageTitle} 👋</p>
             <span className="message-time">{currentTime}</span>
           </div>
-
           {isTyping ? (
             <div className="bot-message typing-indicator">
               <span></span>
@@ -260,7 +255,6 @@ const renderButtonContent = () => {
             </div>
           )}
         </div>
-
         {/* Footer */}
         <div className="footer-wts">
           <a
@@ -301,12 +295,8 @@ const renderButtonContent = () => {
           </span>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
 export default ChatWidget;
-  
-
-
-
