@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const Tooltip = ({ config, showTooltip, position = "right", buttonSize = "small" }) => {
+const Tooltip = ({ config = {}, showTooltip, position = "right" }) => {
   const tooltipRef = useRef(null);
   const [adjustedPosition, setAdjustedPosition] = useState(position);
 
@@ -8,38 +8,45 @@ const Tooltip = ({ config, showTooltip, position = "right", buttonSize = "small"
     if (tooltipRef.current) {
       const tooltipRect = tooltipRef.current.getBoundingClientRect();
       if (position === "right" && tooltipRect.right > window.innerWidth) {
-        setAdjustedPosition("left"); // If overflowing, switch to left
+        setAdjustedPosition("left");
       } else if (position === "left" && tooltipRect.left < 0) {
-        setAdjustedPosition("right"); // If overflowing on left, switch to right
+        setAdjustedPosition("right");
       }
     }
   }, [showTooltip, position]);
 
   if (!showTooltip) return null;
 
-  // Dynamic styling based on config
-  const sizeAdjustment = buttonSize === "big" ? 20 : 10; // Adjust based on button size
+  const {
+    text = "Chat!",
+    bgColor = "#000",
+    textColor = "#fff",
+    fontSize = "12px",
+    fontFamily = "Arial",
+    padding = "4px 8px",
+    borderRadius = "3px",
+    boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.2)",
+    arrowSize = 6, // Adjusted arrow size
+  } = config;
+
   const tooltipStyle = {
     position: "absolute",
-    backgroundColor: config?.bgColor || "#000",
-    color: config?.textColor || "#fff",
-    fontSize: config?.fontSize || "14px",
-    fontFamily: config?.fontFamily || "Arial, sans-serif",
-    padding: config?.padding || "8px 12px",
-    borderRadius: config?.borderRadius || "5px",
+    backgroundColor: bgColor,
+    color: textColor,
+    fontSize,
+    fontFamily,
+    padding,
+    borderRadius,
     whiteSpace: "nowrap",
     zIndex: 1000,
     top: "50%",
     transform: "translateY(-50%)",
-    maxWidth: config?.maxWidth || "200px",
+    boxShadow,
     ...(adjustedPosition === "right"
-      ? { left: `calc(100% + ${sizeAdjustment}px)`, right: "auto" }
-      : { right: `calc(100% + ${sizeAdjustment}px)`, left: "auto" }),
-    boxShadow: config?.boxShadow || "0px 4px 8px rgba(0, 0, 0, 0.2)",
+      ? { left: "calc(100% + 4px)", right: "auto" } // Reduced gap
+      : { right: "calc(100% + 4px)", left: "auto" }),
   };
 
-  // Dynamic Arrow Styling
-  const arrowSize = config?.arrowSize || 6;
   const arrowStyle = {
     content: '""',
     position: "absolute",
@@ -49,22 +56,21 @@ const Tooltip = ({ config, showTooltip, position = "right", buttonSize = "small"
     borderWidth: `${arrowSize}px`,
     top: "50%",
     transform: "translateY(-50%)",
-    marginTop: "-1px", // Removes the gap between arrow and tooltip box
     ...(adjustedPosition === "right"
       ? {
           left: `-${arrowSize * 2}px`,
-          borderColor: `transparent ${config?.bgColor || "#000"} transparent transparent`,
+          borderColor: `transparent ${bgColor} transparent transparent`,
         }
       : {
           right: `-${arrowSize * 2}px`,
-          borderColor: `transparent transparent transparent ${config?.bgColor || "#000"}`,
+          borderColor: `transparent transparent transparent ${bgColor}`,
         }),
   };
 
   return (
     <div ref={tooltipRef} style={tooltipStyle}>
       <div style={arrowStyle}></div>
-      {config?.text || "Chat with us on WhatsApp!"}
+      {text}
     </div>
   );
 };

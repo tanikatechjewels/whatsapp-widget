@@ -45,12 +45,12 @@
       "text": "Let's Chat",
       "bgColor": "#000",
       "textColor": "#ffffff",
-      "fontSize": "16px",
+      "fontSize": "12px",
       "fontFamily": "Arial",
-      "padding": "10px 14px",
-      "borderRadius": "8px",
+      "padding": "4px 8px",
+      "borderRadius": "3px",
       "boxShadow": "0px 4px 10px rgba(0,0,0,0.3)",
-      "arrowSize": 8
+      "arrowSize": 6
     },
   
   "whatsappNumber": "7021707461",
