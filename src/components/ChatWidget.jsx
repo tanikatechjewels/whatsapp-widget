@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../styles.css";
 
-const ChatWidget = () => {
+const ChatWidget = ({ apikey
+  
+}) => {
   const [config, setConfig] = useState(null);
+  console.log(config)
   const [isOpen, setIsOpen] = useState(false);
   const [notification, setNotification] = useState(0);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -13,33 +16,54 @@ const ChatWidget = () => {
 
   const whatsappButtonRef = useRef(null);
   const chatWrapperRef = useRef(null);
-
   useEffect(() => {
-    // Fetching configuration data
-    axios
-      .get("public/config.json")
-      .then((res) => setConfig(res.data))
-      .catch((err) => console.error("Error loading config:", err));
+  const fetchStoreInfo = axios.get("https://api.jwero.com/settings/store_info", {
+    headers: {
+      "apikey": apikey, // Replace with actual API key
 
-    // Setting up tooltips and notification
-    setTimeout(() => setShowTooltip(true), 2000);
-    setTimeout(() => setNotification(1), 2000);
+    },
+  });
 
-    // Updating current time every minute
-    const updateTime = () => {
-      setCurrentTime(
-        new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-      );
-    };
+  const fetchConfigJson = axios.get("public/config.json"); // Correct path for public folder
 
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
+  Promise.all([fetchStoreInfo, fetchConfigJson])
+    .then(([storeRes, configRes]) => {
+      setConfig({
+        storeInfo: storeRes?.data?.data || {}, // Ensure it doesn't break if empty
+        configJson: configRes?.data || {}, // Ensure it doesn't break if empty
+        ...configRes?.data || {}
+      });
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, []);
+    })
+    .catch((err) => console.error("Error loading data:", err));
+
+  // Setting up tooltips and notifications
+  const tooltipTimeout = setTimeout(() => {
+    setShowTooltip(true);
+    setNotification(1);
+  }, 2000);
+
+  // Updating current time every minute
+  const updateTime = () => {
+    setCurrentTime(
+      new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    );
+  };
+
+  updateTime(); // Set initial time
+  const interval = setInterval(updateTime, 60000);
+
+  return () => {
+    clearInterval(interval); // Cleanup interval on unmount
+    clearTimeout(tooltipTimeout); // Cleanup timeout on unmount
+  };
+}, []);
+
+  
+  
 
   // Auto-opening the chat after 3 seconds if config.autoOpenChat is true
   useEffect(() => {
@@ -114,10 +138,10 @@ const ChatWidget = () => {
     } else {
       return (
         <img
-          src={config.floatingButton.icon}
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png"
           alt="WhatsApp"
           //className="wts-icon"
-          style={{ width: "30px" }} // Adjust icon size for logo only
+          style={{ width: "35px" }} // Adjust icon size for logo only
         />
       );
     }
@@ -203,7 +227,7 @@ const ChatWidget = () => {
         ref={chatWrapperRef}
         className={`chat-wrapper ${isOpen ? "open" : "close"}`}
         style={{
-          backgroundImage: `url(${config.chatBox.bgImage})`,
+          backgroundImage: config.chatBox.bgImage,
           backgroundSize: "cover",
           fontFamily: config.chatBox.fontFamily,
           position: "fixed",
@@ -221,10 +245,10 @@ const ChatWidget = () => {
         >
           <div className="content-wrapper">
             <div className="img-wrapper">
-              <img src={config.chatHeader.image} alt="Support" />
+              <img src={config.storeInfo?.store_icon} alt="Support" />
             </div>
             <div>
-              <h3>{config.chatHeader.title}</h3>
+              <h3>{config.storeInfo?.store_name}</h3>
               <p className="status-message">
                 {config.chatHeader.statusMessage}
               </p>
@@ -276,8 +300,9 @@ const ChatWidget = () => {
             }}
           >
             <img
-              src={config.floatingButton.icon}
+              // src={config.floatingButton.icon}
               alt="WhatsApp"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png"
               
               className="wts-button-icon"
             />

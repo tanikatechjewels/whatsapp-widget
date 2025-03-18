@@ -8,7 +8,6 @@
       "fontFamily": "Arial, sans-serif"
     },
     "chatBox": {
-      "bgImage": "public/bg.jpg",
       "messageTitle": "Hello!",
       "messageContent": "Hey!! Want to Talk with Jwero",
       "textColor": "#000",
@@ -28,7 +27,7 @@
     "autoOpenChat": true,
     "floatingButton": {
       "bgColor": "#25d366",
-      "icon": "public/whatsapp_logo.png",
+
       "showText": true,
       "fontFamily": "Courier New, monospace",
       "fontSize": "14px",

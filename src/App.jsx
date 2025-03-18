@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <h1>WhatsApp Chat Widget</h1>
-      <ChatWidget />
+      <ChatWidget apikey={"HUiAXvW5MKT9VWd1eaMIPA=="}/>
     </div>
   );
 }
