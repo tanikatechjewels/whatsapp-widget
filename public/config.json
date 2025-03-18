@@ -32,7 +32,7 @@
       "showText": true,
       "fontFamily": "Courier New, monospace",
       "fontSize": "14px",
-      "alignment": "left",
+      "alignment": "right",
       "display": "logo",
       "padding": " 0px 1px",
       "borderRadius": "50px",
