@@ -1,0 +1,86 @@
+{
+    "chatHeader": {
+      "bgColor": "#128c7e",
+      "textColor": "#ffffff",
+      "title": "Jwero.ai",
+      "image": "src/assets/jwero-logo.jpeg",
+      "statusMessage": "Available",
+      "fontFamily": "Arial, sans-serif"
+    },
+    "chatBox": {
+      "bgImage": "src/assets/bg.jpg",
+      "messageTitle": "Hello!",
+      "messageContent": "Hey!! Want to Talk with Jwero",
+      "textColor": "#000",
+      "userMessageBgColor": "#e0f2e9",
+      "userMessageTextColor": "#000",
+      "botMessageBgColor": "#e0f2e9",
+      "alignment":"right",
+      "botMessageTextColor": "#000000",
+      "fontFamily": "Verdana, sans-serif"
+    },
+    "whatsappButton": {
+      "bgColor": "#25d366",
+      "textColor": "#ffffff",
+      "buttonText": "Chat with us",
+      "fontFamily": "Roboto, sans-serif"
+    },
+    "autoOpenChat": true,
+    "floatingButton": {
+      "bgColor": "#25d366",
+      "icon": "src/assets/whatsapp_logo.png",
+      "showText": true,
+      "fontFamily": "Courier New, monospace",
+      "fontSize": "14px",
+      "alignment": "left",
+      "display": "logo",
+      "padding": " 0px 1px",
+      "borderRadius": "50px",
+      "iconSize": "5px",
+      "textAlign": "center",
+      "maxWidth": "150px",
+      "height": "50px",
+      "minWidth": "50px",
+      "lineHeight": "1.2",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "flexDirection": "row",
+      "gap": "10px"
+    },
+    "whatsappNumber": "7021707461",
+    "poweredBy": {
+      "poweredText": "Powered by",
+      "jweroText": "https://jwero.ai/",
+      "poweredColor": "black",
+      "jweroColor": "#003366",
+      "fontFamily": "Georgia, serif"
+    },
+    "tooltip": {
+      "text": "Let's Chat",
+      "bgColor": "#ffffff",
+      "textColor": "#000000",
+      "delay": 5000,
+      "fontFamily": "Tahoma, sans-serif"
+    },
+    "notification": {
+      "enabled": true,
+      "count": 1,
+      "delay": 3000
+    },
+    "buttonStyle": {
+      "displayText": true,
+      "fontSize": "14px",
+      "iconSize": "20px",
+      "textPadding": "10px 15px",
+      "buttonPadding": "10px 20px",
+      "borderRadius": "15px",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "fontFamily": "Arial, sans-serif",
+      "textColor": "#ffffff",
+      "bgColor": "#128c7e",
+      "hoverBgColor": "#0f6f6a",
+      "transition": "background-color 0.3s ease-in-out"
+    }
+  }
+  
