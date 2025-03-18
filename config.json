@@ -73,7 +73,7 @@
       "iconSize": "20px",
       "textPadding": "10px 15px",
       "buttonPadding": "10px 20px",
-      "borderRadius": "15px",
+      "borderRadius": "px",
       "alignItems": "center",
       "justifyContent": "center",
       "fontFamily": "Arial, sans-serif",
