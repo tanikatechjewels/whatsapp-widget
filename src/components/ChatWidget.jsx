@@ -17,7 +17,7 @@ const ChatWidget = () => {
   useEffect(() => {
     // Fetching configuration data
     axios
-      .get("/config.json")
+      .get("public/config.json")
       .then((res) => setConfig(res.data))
       .catch((err) => console.error("Error loading config:", err));
 

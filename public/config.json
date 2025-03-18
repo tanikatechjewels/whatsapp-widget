@@ -3,12 +3,12 @@
       "bgColor": "#128c7e",
       "textColor": "#ffffff",
       "title": "Jwero.ai",
-      "image": "src/assets/jwero-logo.jpeg",
+      "image": "public/jwero-logo.jpeg",
       "statusMessage": "Available",
       "fontFamily": "Arial, sans-serif"
     },
     "chatBox": {
-      "bgImage": "src/assets/bg.jpg",
+      "bgImage": "public/bg.jpg",
       "messageTitle": "Hello!",
       "messageContent": "Hey!! Want to Talk with Jwero",
       "textColor": "#000",
@@ -28,7 +28,7 @@
     "autoOpenChat": true,
     "floatingButton": {
       "bgColor": "#25d366",
-      "icon": "src/assets/whatsapp_logo.png",
+      "icon": "public/whatsapp_logo.png",
       "showText": true,
       "fontFamily": "Courier New, monospace",
       "fontSize": "14px",

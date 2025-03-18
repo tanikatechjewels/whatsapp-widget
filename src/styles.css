@@ -58,7 +58,7 @@
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(50px);
-    background: url('src/assets/bg.jpg');
+    background: url('.public/bg.jpg');
     /* Use the correct image path */
     background-size: cover;
     background-repeat: no-repeat;
