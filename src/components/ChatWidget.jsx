@@ -222,7 +222,7 @@ const ChatWidget = ({ apikey
           </div>
         )}
       </div>
-
+        
       <div
         ref={chatWrapperRef}
         className={`chat-wrapper ${isOpen ? "open" : "close"}`}
