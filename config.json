@@ -2,8 +2,6 @@
     "chatHeader": {
       "bgColor": "#128c7e",
       "textColor": "#ffffff",
-
-
       "statusMessage": "Available",
       "fontFamily": "Arial, sans-serif"
     },
