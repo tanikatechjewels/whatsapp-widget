@@ -24,7 +24,7 @@ const ChatWidget = ({ apikey
     },
   });
 
-  const fetchConfigJson = axios.get("public/config.json"); // Correct path for public folder
+  const fetchConfigJson = axios.get("/whatsapp-widget/public/config.json"); // Correct path for public folder
 
   Promise.all([fetchStoreInfo, fetchConfigJson])
     .then(([storeRes, configRes]) => {
