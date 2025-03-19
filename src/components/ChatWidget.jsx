@@ -24,7 +24,7 @@ const ChatWidget = ({ apikey
     },
   });
 
-  const fetchConfigJson = axios.get("/tanikatechjewels/whatsapp-widget/config.json"); // Correct path for public folder
+  const fetchConfigJson = axios.get("https://raw.githubusercontent.com/tanikatechjewels/whatsapp-widget/refs/heads/main/public/config.json"); // Correct path for public folder
 
   Promise.all([fetchStoreInfo, fetchConfigJson])
     .then(([storeRes, configRes]) => {
