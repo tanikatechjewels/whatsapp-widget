@@ -2,14 +2,14 @@
     "chatHeader": {
       "bgColor": "#128c7e",
       "textColor": "#ffffff",
-      "title": "Jwero.ai",
-      "image": "public/jwero-logo.jpeg",
+
+
       "statusMessage": "Available",
       "fontFamily": "Arial, sans-serif"
     },
     "chatBox": {
       "messageTitle": "Hello!",
-      "messageContent": "Hey!! Want to Talk with Jwero",
+      "messageContent": "Hey!! Want to Talk with Tiara",
       "textColor": "#000",
       "userMessageBgColor": "#e0f2e9",
       "userMessageTextColor": "#000",
