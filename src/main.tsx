@@ -15,3 +15,4 @@ if (rootElement) {
 } else {
   console.error("Root element with id 'root' not found. Ensure it exists in index.html.");
 }
+                                        

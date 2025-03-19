@@ -127,9 +127,9 @@ const ChatWidget = ({ apikey
       return (
         <>
           <img
-            src={config.floatingButton.icon}
+            src={"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png"}
             alt="WhatsApp"
-            className="wts-icon"
+            //className="wts-icon"
             style={{ width: "24px", marginRight: "10px" }} // Adjust icon size and spacing
           />
           <span>{config.whatsappButton.buttonText}</span>
@@ -155,7 +155,7 @@ const ChatWidget = ({ apikey
       <div style={{ position: "relative" }}>
         <button
           ref={whatsappButtonRef}
-          className={`main-button ${config.floatingButton.display === "logo" ? "logo-only" : "logo-with-text"} animate-bounce`} //aaaaaaaaa
+          className={`main-button ${config.floatingButton.display === "logo" ? "text-only" : "logo-with-text"} animate-bounce`} //aaaaaaaaa
           onClick={handleButtonClick}
           style={{
             backgroundColor: config.floatingButton.bgColor,
@@ -168,7 +168,7 @@ const ChatWidget = ({ apikey
             justifyContent: "center",
             gap: "0px", // Space between icon and text
             width: "auto", // Allow width to adjust based on content
-            padding: config.floatingButton.display === "logo" ? "10px" : "15px 20px", // Different padding for logo-only and logo+text
+            padding: config.floatingButton.display === "logo" ? "6px" : "11px 15px", // Different padding for logo-only and logo+text
             fontSize: config.floatingButton.display === "logo" ? "0" : "16px", // No font size for logo-only
             fontWeight: "bold",
             borderRadius: "100px",
@@ -197,7 +197,7 @@ const ChatWidget = ({ apikey
               backgroundColor: config.tooltip.bgColor,
               color: config.tooltip.textColor,
               fontFamily: config.tooltip.fontFamily,
-              padding: "8px 15px",
+              padding: "5px 12px",
               borderRadius: "8px",
               boxShadow: "-5px 4px 6px rgba(0, 0, 0, 0.2)",
               zIndex: 999,
