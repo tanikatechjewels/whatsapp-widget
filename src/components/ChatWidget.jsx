@@ -91,7 +91,8 @@ const ChatWidget = ({ apikey
         setIsTyping(false);
       }, 2000);
     }
-  }, [isOpen, config]);
+  }, 
+  [isOpen, config]);
 
   const getTooltipPosition = () => {
     if (whatsappButtonRef.current) {
@@ -164,6 +165,7 @@ const ChatWidget = ({ apikey
             [config.floatingButton.alignment]: "10px", // Dynamic positioning based on config
             bottom: "10px",
             display: "flex",
+            zIndex:"9999",
             alignItems: "center",
             justifyContent: "center",
             gap: "0px", // Space between icon and text

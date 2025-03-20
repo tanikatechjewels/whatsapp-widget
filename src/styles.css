@@ -68,6 +68,7 @@
 
 .chat-wrapper.close {
     transform: translateY(100%);
+    pointer-events: none;
     animation: slideOut 0.3s ease-in-out forwards;
 }
 
